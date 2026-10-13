@@ -1,0 +1,396 @@
+/* Premium Marketplace Styles - Imagine Cup Standard */
+
+.marketplace-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  animation: fade-in 0.8s var(--ease-smooth);
+}
+
+/* Header */
+.marketplace-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.marketplace-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-primary-900);
+  margin: 0;
+}
+
+/* Grid */
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 32px;
+}
+
+/* Card */
+.listing-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.4s var(--ease-smooth);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary-200);
+}
+
+/* Image */
+.listing-image-container {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.listing-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-elastic);
+}
+
+.listing-card:hover .listing-image {
+  transform: scale(1.05);
+}
+
+/* Content */
+.listing-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.listing-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-primary-900);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.listing-farmer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-primary-700);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.listing-location {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+/* Footer & Price */
+.listing-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.listing-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-600);
+  background: var(--color-primary-50);
+  padding: 6px 16px;
+  border-radius: 99px;
+}
+
+.listing-quantity {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
+/* Empty State */
+.marketplace-container .empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 32px;
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+}
+/* ---------- Filters ---------- */
+.marketplace-container .market-filters {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-top: -16px;
+  border-radius: 99px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  align-self: flex-start;
+}
+
+.marketplace-container .market-filter {
+  border: none;
+  background: transparent;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.marketplace-container .market-filter.active {
+  background: var(--color-primary-700);
+  color: #fff;
+}
+
+/* ---------- Status badges on the image ---------- */
+.marketplace-container .listing-status,
+.marketplace-container .listing-own-badge {
+  position: absolute;
+  top: 12px;
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.marketplace-container .listing-status { left: 12px; background: #fff; color: #047857; }
+.marketplace-container .listing-status-pending-pickup { background: #fffbeb; color: #b45309; }
+.marketplace-container .listing-status-completed { background: #1f2937; color: #fff; }
+.marketplace-container .listing-own-badge { right: 12px; background: var(--color-primary-700); color: #fff; }
+
+/* ---------- Bid summary + actions ---------- */
+.marketplace-container .listing-bid-summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 14px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.marketplace-container .listing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.marketplace-container .listing-actions:empty { display: none; }
+
+.marketplace-container .deal-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  background: #fffbeb;
+  color: #78350f;
+}
+
+.marketplace-container .deal-note > svg { flex-shrink: 0; margin-top: 2px; }
+.marketplace-container .deal-note-done { background: #ecfdf5; color: #065f46; }
+.marketplace-container .deal-note-muted { background: var(--color-surface-bg); color: var(--color-text-muted); }
+
+.marketplace-container .deal-btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.marketplace-container .deal-btn-row .deal-btn { flex: 1 1 auto; }
+
+.deal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+}
+
+.deal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.deal-btn-primary { background: var(--color-primary-700); color: #fff; }
+.deal-btn-primary:hover:not(:disabled) { background: var(--color-primary-800); }
+.deal-btn-outline { background: #fff; color: var(--color-primary-800); border-color: var(--color-primary-200); }
+.deal-btn-outline:hover { border-color: var(--color-primary-500); }
+.deal-btn-ghost { background: var(--color-surface-bg); color: var(--color-text-muted); }
+.deal-btn-ghost:hover { color: #b91c1c; background: #fef2f2; }
+.deal-btn-sm { padding: 7px 12px; font-size: 0.8rem; }
+
+/* ---------- Farmer's bid list ---------- */
+.marketplace-container .bid-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.marketplace-container .bid-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--color-surface-bg);
+  border: 1px solid var(--color-border);
+}
+
+.marketplace-container .bid-row-main { min-width: 0; flex: 1 1 150px; }
+.marketplace-container .bid-row-main p { margin: 0; }
+.marketplace-container .bid-buyer { font-weight: 700; color: var(--color-primary-900); }
+.marketplace-container .bid-price { font-weight: 700; color: var(--color-primary-700); }
+.marketplace-container .bid-price span { font-weight: 500; color: var(--color-text-muted); font-size: 0.85rem; }
+.marketplace-container .bid-meta { display: flex; align-items: center; gap: 4px; font-size: 0.8rem; color: var(--color-text-muted); }
+.marketplace-container .bid-message { margin-top: 4px !important; font-size: 0.82rem; font-style: italic; color: var(--color-text-muted); }
+.marketplace-container .bid-row-actions { display: flex; flex-direction: column; gap: 6px; }
+
+/* ---------- Bid dialog ---------- */
+.bid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.bid-dialog {
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bid-dialog-header { display: flex; align-items: center; justify-content: space-between; }
+.bid-dialog-header h3 { margin: 0; font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-primary-900); }
+.bid-close { border: none; background: var(--color-surface-bg); width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; padding: 0; }
+.bid-dialog-sub { margin: -8px 0 0; color: var(--color-text-muted); font-size: 0.9rem; }
+
+.bid-field { display: flex; flex-direction: column; gap: 6px; }
+.bid-field span { font-size: 0.88rem; font-weight: 600; color: var(--color-primary-800); }
+.bid-field small { color: var(--color-text-muted); font-size: 0.8rem; }
+.bid-field input,
+.bid-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface-bg);
+  resize: vertical;
+}
+
+.bid-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--color-primary-50);
+  color: var(--color-primary-800);
+}
+
+.bid-total strong { font-size: 1.3rem; color: var(--color-primary-900); }
+.bid-warning { margin: -4px 0 0; font-size: 0.85rem; color: #b45309; }
+
+/* ---------- Produce marketplace ---------- */
+.marketplace-container .market-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -12px;
+}
+
+.marketplace-container .market-search { flex: 1 1 320px; max-width: 560px; }
+
+.marketplace-container .market-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.marketplace-container .market-filters-row .ui-field { flex: 0 1 180px; }
+
+.marketplace-container .market-mine {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-800);
+}
+
+.marketplace-container .produce-image {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0fdf4, #fefce8);
+}
+
+.marketplace-container .produce-emoji { font-size: 4.2rem; line-height: 1; }
+
+.marketplace-container .produce-fpo { display: inline-flex; align-items: center; gap: 4px; background: #7c3aed; }
+
+.marketplace-container .produce-meta { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+
+.marketplace-container .produce-stock {
+  height: 6px;
+  margin-top: 12px;
+  border-radius: 99px;
+  background: #ecfdf5;
+  overflow: hidden;
+}
+
+.marketplace-container .produce-stock span { display: block; height: 100%; background: #f59e0b; border-radius: 99px; }
+
+.marketplace-container .produce-min { margin: 8px 0 0; font-size: 0.8rem; color: var(--color-text-muted); }
+
+.market-ref { display: flex; gap: 4px; align-items: flex-start; line-height: 1.4; color: #1d4ed8 !important; }
+.market-ref svg { flex-shrink: 0; margin-top: 2px; }
+
+.market-contact { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; margin: 0; font-size: 0.88rem; color: var(--color-text-muted); }
+.market-contact a { color: var(--color-primary-700); font-weight: 600; }
+
+@media (max-width: 600px) {
+  .marketplace-container .market-filters-row .ui-field { flex: 1 1 140px; }
+}

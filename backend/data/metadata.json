@@ -1,0 +1,8 @@
+{
+  "name": "AgriLoop 2.0",
+  "description": "AI-powered circular economy marketplace transforming agricultural waste into income.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}

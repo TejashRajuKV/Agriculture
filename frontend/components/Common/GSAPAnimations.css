@@ -1,0 +1,250 @@
+/* GSAP Enhanced Agricultural Animations */
+
+/* Floating Elements */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-leaf {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(34, 197, 94, 0.3);
+  border-radius: 0 100% 0 100%;
+  transform-origin: center;
+  filter: blur(0.5px);
+}
+
+/* Agricultural Hover Cards */
+.agri-hover-card {
+  transform-style: preserve-3d;
+  transition: none; /* Let GSAP handle transitions */
+  cursor: pointer;
+}
+
+/* Enhanced Scroll Wrapper */
+.enhanced-scroll-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Agricultural Loader */
+.agri-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.seed {
+  width: 12px;
+  height: 12px;
+  background: #a16207;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.sprout {
+  width: 4px;
+  height: 0px;
+  background: #22c55e;
+  border-radius: 2px 2px 0 0;
+  opacity: 0;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.agri-loader p {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Animated Text Characters */
+.animated-text .char {
+  display: inline-block;
+  transform-origin: center bottom;
+}
+
+/* Enhanced Section Transitions */
+.section-transition {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-transition::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Parallax Layers */
+.parallax-bg {
+  will-change: transform;
+}
+
+.parallax-mid {
+  will-change: transform;
+}
+
+.parallax-front {
+  will-change: transform;
+}
+
+/* Enhanced Role Cards for GSAP */
+.role-card {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Stagger Animation Classes */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Scroll Animation Classes */
+.scroll-animate {
+  will-change: transform, opacity;
+}
+
+/* Enhanced Hero Elements - Ensure visibility */
+.hero-badge,
+.hero-title,
+.hero-description,
+.hero-buttons button,
+.hero-stat {
+  opacity: 1 !important; /* Ensure text is always visible */
+  will-change: transform;
+}
+
+.hero-card {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Features Section Enhancements */
+.features-image {
+  will-change: transform;
+}
+
+.features-content {
+  will-change: transform, opacity;
+}
+
+.features-list-item {
+  will-change: transform, opacity;
+}
+
+/* Weather Section Enhancements */
+.weather-problems {
+  will-change: transform, opacity;
+}
+
+.weather-solutions {
+  will-change: transform, opacity;
+}
+
+.weather-solutions-item {
+  will-change: transform, opacity;
+}
+
+/* Performance Optimizations */
+.login-screen * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU Acceleration for smooth animations */
+.hero-card,
+.role-card,
+.features-image-main,
+.weather-image-main {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating-elements,
+  .particles-container,
+  .scroll-animate,
+  .agri-hover-card {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .enhanced-scroll-wrapper {
+    scroll-behavior: auto;
+  }
+}
+
+/* Enhanced Gradient Backgrounds */
+.gradient-text-nature {
+  background: linear-gradient(135deg, #22c55e, #f59e0b, #0ea5e9, #16a34a);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  will-change: background-position;
+}
+
+/* Text Sizing Classes */
+.text-hero {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1.1;
+  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+}
+
+.text-section {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .floating-elements {
+    display: none; /* Reduce complexity on mobile */
+  }
+  
+  .particles-container {
+    opacity: 0.5;
+  }
+  
+  .hero-card {
+    transform: none !important;
+  }
+  
+  .role-card {
+    transform: none !important;
+  }
+}

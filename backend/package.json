@@ -1,0 +1,29 @@
+{
+  "name": "agriloop-backend",
+  "version": "1.0.0",
+  "description": "AgriLoop Backend - Node.js Server",
+  "main": "MainServer.js",
+  "scripts": {
+    "start": "node MainServer.js",
+    "dev": "nodemon MainServer.js",
+    "simple": "node BasicServer.js",
+    "seed": "node scripts/seedAgriLoop.js",
+    "test": "node --test --test-concurrency=1 \"tests/suite/*.test.js\"",
+    "test:legacy": "node tests/testServer.js"
+  },
+  "nodemonConfig": {
+    "ignore": ["uploads/*", "tests/*", "data/*"]
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.5.0",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "type": "module"
+}

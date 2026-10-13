@@ -1,0 +1,699 @@
+.crop-market-screen {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.market-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background: var(--sb-white);
+  padding: 2rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-clay);
+  border: 4px solid var(--sb-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.market-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, var(--sb-green-primary) 0%, var(--sb-sky-light) 100%);
+}
+
+.market-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sb-brown-dark);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+}
+
+.market-title svg {
+  color: var(--sb-green-dark);
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1));
+}
+
+.market-subtitle {
+  font-size: 1.1rem;
+  color: var(--sb-brown-text);
+  margin: 0;
+  font-weight: 500;
+}
+
+.server-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-float);
+  border: 2px solid white;
+}
+
+.server-status.connected {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.server-status.disconnected {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.server-status.checking {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.server-status.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+.server-status.connected .status-dot { background-color: #16a34a; }
+.server-status.disconnected .status-dot { background-color: #dc2626; }
+.server-status.checking .status-dot { background-color: #d97706; }
+.server-status.error .status-dot { background-color: #dc2626; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+.loading-container {
+  text-align: center;
+  padding: 4rem;
+  background: var(--sb-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-clay);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid var(--sb-sand);
+  border-top: 6px solid var(--sb-green-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.market-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Stock Market Table Styles */
+.stock-table-container {
+  background: var(--sb-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-clay);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.stock-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.stock-table thead {
+  background: var(--sb-ground);
+}
+
+.stock-table th {
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  color: var(--sb-brown-light);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px dashed var(--sb-sand);
+}
+
+.stock-row {
+  transition: all 0.2s var(--bounce);
+  cursor: pointer;
+  border-bottom: 1px solid var(--sb-sand);
+}
+
+.stock-row:last-child {
+  border-bottom: none;
+}
+
+.stock-row:hover {
+  background-color: var(--sb-ground);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.stock-table td {
+  padding: 1.25rem 1rem;
+  font-size: 1rem;
+  vertical-align: middle;
+  color: var(--sb-brown-dark);
+}
+
+.commodity-name {
+  font-weight: 700;
+  color: var(--sb-brown-dark);
+}
+
+.commodity-symbol {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+}
+
+.price-cell {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.change-cell, .percent-cell {
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.change-cell.up, .percent-cell.up { color: #16a34a; }
+.change-cell.down, .percent-cell.down { color: #dc2626; }
+.change-cell.stable, .percent-cell.stable { color: #d97706; }
+
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-float);
+}
+
+.trend-badge.up { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.trend-badge.down { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.trend-badge.stable { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+
+.volume-cell {
+  font-size: 0.9rem;
+  color: var(--sb-brown-light);
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius-button);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s var(--bounce);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.action-btn.up { background: #16a34a; color: white; }
+.action-btn.down { background: #dc2626; color: white; }
+.action-btn.stable { background: #d97706; color: white; }
+
+.whatsapp-btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--radius-button);
+  background: #25d366;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s var(--bounce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 0 #128c7e;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 0 #128c7e;
+}
+
+/* Chart Section */
+.crop-details {
+  margin-top: 1rem;
+  animation: slideUp 0.5s var(--bounce);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stock-chart {
+  background: var(--sb-white);
+  border-radius: var(--radius-card);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-clay);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.crop-market-screen .chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px dashed var(--sb-sand);
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sb-brown-dark);
+  margin: 0;
+}
+
+.chart-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--sb-ground);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-button);
+}
+
+.current-price {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.current-price.up { color: #16a34a; }
+.current-price.down { color: #dc2626; }
+.current-price.stable { color: #d97706; }
+
+.price-change {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.price-change.up { background: #dcfce7; color: #15803d; }
+.price-change.down { background: #fee2e2; color: #b91c1c; }
+.price-change.stable { background: #fef3c7; color: #b45309; }
+
+.chart-container-stock {
+  margin: 2rem 0;
+  height: 350px;
+  background: var(--sb-ground);
+  border-radius: var(--radius-card);
+  padding: 1rem;
+  border: 2px solid var(--sb-white);
+  box-shadow: var(--shadow-inset);
+}
+
+/* Tooltip Customization */
+.chart-tooltip {
+  background: var(--sb-white);
+  border: 2px solid var(--sb-sand);
+  border-radius: var(--radius-button);
+  padding: 1rem;
+  box-shadow: var(--shadow-float);
+}
+
+.tooltip-label {
+  color: var(--sb-brown-light);
+  font-size: 0.85rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.tooltip-value {
+  color: var(--sb-brown-dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.tooltip-currency {
+  color: var(--sb-green-primary);
+  margin-right: 2px;
+}
+
+.chart-suggestion {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.suggestion-badge {
+  background: linear-gradient(135deg, var(--sb-green-soft) 0%, var(--sb-sky-light) 100%);
+  color: var(--sb-brown-dark);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-button);
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-float);
+  border: 2px solid white;
+  font-family: 'Fredoka', sans-serif;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .crop-market-screen {
+    padding: 1rem;
+  }
+  
+  .market-title {
+    font-size: 1.75rem;
+    flex-direction: column;
+  }
+  
+  .stock-table-container {
+    overflow-x: auto;
+  }
+  
+  .stock-table th, .stock-table td {
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .current-price {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===============================
+   MODERN AGRI-TECH MARKET UI
+   =============================== */
+
+.crop-market-screen {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  min-height: 100vh;
+  padding: 32px;
+}
+
+/* ---------- Header ---------- */
+.market-header {
+  background: linear-gradient(135deg, #0f766e, #115e59);
+  color: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  margin-bottom: 32px;
+}
+
+.market-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.market-title svg {
+  color: #ffffff;
+  filter: none;
+}
+
+.market-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  margin-top: 6px;
+}
+
+/* ---------- Table ---------- */
+.stock-table-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-table th {
+  text-align: left;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  padding: 14px;
+}
+
+.stock-table td {
+  padding: 16px 14px;
+  font-size: 15px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.stock-row {
+  transition: background 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+
+.stock-row:hover {
+  background: rgba(15,118,110,0.06);
+  transform: scale(1.01);
+}
+
+/* ---------- Price Colors ---------- */
+.stock-row.up .current-price,
+.stock-row.up .price-change,
+.stock-row.up .percent-change {
+  color: #16a34a;
+}
+
+.stock-row.down .current-price,
+.stock-row.down .price-change,
+.stock-row.down .percent-change {
+  color: #dc2626;
+}
+
+.stock-row.stable .current-price {
+  color: #ca8a04;
+}
+
+/* ---------- Action Buttons ---------- */
+.action-btn {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn.up {
+  background: rgba(22,163,74,0.15);
+  color: #166534;
+}
+
+.action-btn.down {
+  background: rgba(220,38,38,0.15);
+  color: #7f1d1d;
+}
+
+.action-btn.stable {
+  background: rgba(202,138,4,0.15);
+  color: #713f12;
+}
+
+/* ---------- Chart Card ---------- */
+.crop-details {
+  margin-top: 32px;
+}
+
+.stock-chart {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Chart Header ---------- */
+.crop-market-screen .chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.chart-stats {
+  display: flex;
+  gap: 16px;
+  font-weight: 600;
+}
+
+/* ---------- Suggestion Badge ---------- */
+.suggestion-badge {
+  margin-top: 16px;
+  display: inline-block;
+  background: rgba(15,118,110,0.12);
+  color: #065f46;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.crop-market-screen .commodity-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.crop-market-screen .trend-cell,
+.crop-market-screen .action-cell { white-space: nowrap; }
+
+.crop-market-screen .volume {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.crop-market-screen .tooltip-unit {
+  margin-left: 2px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.crop-market-screen .msp-cell { white-space: nowrap; }
+
+/* Green when the mandi price is at or above MSP, amber when farmers get less than MSP */
+.crop-market-screen .msp-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.crop-market-screen .msp-value.above { background: #ecfdf5; color: #047857; }
+.crop-market-screen .msp-value.below { background: #fffbeb; color: #b45309; }
+
+.crop-market-screen .market-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed var(--color-border);
+  border-radius: 20px;
+  color: var(--color-text-muted);
+}
+
+.crop-market-screen .market-error p { margin: 0; }
+
+.crop-market-screen .market-retry {
+  border: none;
+  border-radius: 99px;
+  padding: 10px 22px;
+  font-weight: 700;
+  color: #fff;
+  background: #0f766e;
+  cursor: pointer;
+}
+
+.crop-market-screen .market-stale {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.crop-market-screen .chart-caveat {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.local-mandis { margin-top: 18px; padding: 14px; border: 1px solid var(--color-border); border-radius: 14px; background: #fff; }
+.local-mandis h4 { margin: 0 0 10px; display: flex; align-items: center; gap: 6px; }
+.local-mandis-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.local-mandis-form input { flex: 1 1 160px; min-width: 0; padding: 8px 10px; border: 1px solid var(--color-border); border-radius: 8px; }
+.local-mandis-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.local-mandis-list li { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 0.92rem; }

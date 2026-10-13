@@ -1,0 +1,85 @@
+/* Ecology Card Styles - Storybook Farming Style */
+.ecology-card {
+  position: relative;
+  background: var(--sb-white);
+  border: 4px solid var(--sb-white);
+  border-radius: var(--radius-card);
+  padding: 2rem;
+  overflow: hidden;
+  transition: all 0.4s var(--bounce);
+  box-shadow: var(--shadow-clay);
+}
+
+.ecology-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-float);
+}
+
+/* Variant Styles - Storybook Tints */
+.ecology-card-default {
+  background: linear-gradient(135deg, var(--sb-white) 0%, #f8fafc 100%);
+  border-color: var(--sb-white);
+}
+
+.ecology-card-farmland {
+  background: linear-gradient(135deg, var(--sb-sand) 0%, #fffbeb 100%);
+  border-color: #fcd34d;
+}
+
+.ecology-card-forest {
+  background: linear-gradient(135deg, var(--sb-green-soft) 0%, #f0fdf4 100%);
+  border-color: var(--sb-green-primary);
+}
+
+.ecology-card-garden {
+  background: linear-gradient(135deg, #fce7f3 0%, #fff1f2 100%); /* Pastel pink */
+  border-color: #f9a8d4;
+}
+
+.ecology-card-harvest {
+  background: linear-gradient(135deg, #ffedd5 0%, #fff7ed 100%); /* Pastel orange */
+  border-color: #fdba74;
+}
+
+.ecology-card-energy {
+  background: linear-gradient(135deg, var(--sb-sky-light) 0%, #f0f9ff 100%);
+  border-color: #7dd3fc;
+}
+
+/* Nature Background Pattern - Simplified or Removed for clean look */
+.ecology-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Animated Glow Effect - Subtle */
+.ecology-glow-effect {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--glow-color, var(--sb-green-primary)), 
+    transparent, 
+    var(--glow-color, var(--sb-green-primary))
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: glow-rotate 4s linear infinite;
+}
+
+/* Growing Border */
+.ecology-border-grow {
+  /* ... existing logic if needed, or simplified */
+}

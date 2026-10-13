@@ -1,0 +1,137 @@
+/* Storybook Farming Landing Page Styles */
+
+/* Header */
+.gh-header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px; /* Cloud/Pill shape */
+    box-shadow: var(--shadow-clay);
+    transition: all 0.4s var(--bounce);
+}
+
+.gh-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--sb-green-dark);
+    font-family: 'Fredoka', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+}
+
+.gh-logo .logo-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sb-brown-dark);
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--sb-sand);
+    opacity: 0.8;
+}
+
+.gh-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.gh-nav a {
+    color: var(--sb-brown-dark);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s var(--bounce);
+    position: relative;
+}
+
+.gh-nav a:hover {
+    color: var(--sb-green-primary);
+    transform: translateY(-2px);
+}
+
+.gh-btn-primary {
+    background-color: var(--sb-green-primary);
+    color: var(--sb-green-dark);
+    padding: 0.8rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    border: 2px solid var(--sb-white);
+    cursor: pointer;
+    transition: all 0.4s var(--bounce);
+    box-shadow: var(--shadow-clay);
+}
+
+.gh-btn-primary:hover {
+    background-color: var(--sb-green-soft);
+    box-shadow: var(--shadow-float);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Hero Section */
+.gh-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+    background: linear-gradient(135deg, var(--sb-sky-light) 0%, #ffffff 100%);
+    overflow: hidden;
+}
+
+.gh-hero::before {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23dcfce7' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.gh-hero-content {
+    max-width: 900px;
+    margin-top: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.gh-hero h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    color: var(--sb-brown-dark);
+    text-shadow: 3px 3px 0px rgba(255,255,255,0.8);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+.gh-hero p {
+    font-size: 1.5rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+/* Feature Grid or other sections can be updated similarly if they exist in this file */
+/* Assuming this file might contain more, but the snippet was limited. 
+   I will focus on the main layout parts visible in the snippet. */

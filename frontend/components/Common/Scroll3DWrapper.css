@@ -1,0 +1,22 @@
+/* Scroll3DWrapper Component Styles */
+.scroll-3d-wrapper {
+  perspective: 1200px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+}
+
+.scroll-3d-wrapper section,
+.scroll-3d-wrapper .card,
+.scroll-3d-wrapper [data-3d-scroll] {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced 3D effects for scrollable content */
+[data-3d-scroll="true"] {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}

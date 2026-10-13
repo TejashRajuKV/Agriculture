@@ -1,0 +1,300 @@
+/* Premium Biogas Styles - Imagine Cup Standard */
+
+.biogas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  animation: fade-in 0.8s var(--ease-smooth);
+}
+
+/* Header */
+.biogas-header {
+  background: linear-gradient(120deg, #4f46e5, #9333ea);
+  border-radius: 32px;
+  padding: 48px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.biogas-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle at top right, rgba(232, 121, 249, 0.3), transparent 60%);
+  pointer-events: none;
+}
+
+.biogas-header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.biogas-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.biogas-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Stats */
+.biogas-stats {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 20px 32px;
+  border-radius: 20px;
+  display: flex;
+  gap: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.biogas-stat {
+  text-align: center;
+}
+
+.biogas-stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  display: block;
+}
+
+.biogas-stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* Filter Bar */
+.filter-bar {
+  background: white;
+  padding: 16px 24px;
+  border-radius: 99px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border-radius: 99px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+  background: var(--color-surface-bg);
+  color: var(--color-text-main);
+}
+
+.filter-button.active {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+.search-container {
+  width: 300px;
+}
+
+.biogas-container .search-input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-bg);
+}
+
+.biogas-container .search-input:focus {
+  outline: none;
+  background: white;
+  border-color: #9333ea;
+}
+
+/* Grid */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.biogas-container .biogas-title-icon { flex-shrink: 0; }
+
+.biogas-container .biogas-stat-divider {
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.biogas-container .filter-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.biogas-container .filter-button-degradable.active { background: #dcfce7; color: #15803d; }
+.biogas-container .filter-button-non-degradable.active { background: #fee2e2; color: #b91c1c; }
+
+.biogas-container .search-container { position: relative; }
+
+.biogas-container .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-light);
+  pointer-events: none;
+}
+
+.biogas-container .search-container .search-input { padding-left: 42px; }
+
+.biogas-container .empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 56px 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed var(--color-border);
+  border-radius: 24px;
+}
+
+.biogas-container .empty-state-icon-container {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3e8ff;
+  margin-bottom: 8px;
+}
+
+.biogas-container .empty-state-icon { color: #9333ea; }
+
+.biogas-container .empty-state-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-primary-900);
+}
+
+.biogas-container .empty-state-text { margin: 0; color: var(--color-text-muted); }
+
+.biogas-container .listing-quantity-badge,
+.biogas-container .listing-type-badge {
+  position: absolute;
+  top: 12px;
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.biogas-container .listing-quantity-badge { right: 12px; color: var(--color-primary-900); }
+
+.biogas-container .listing-type-badge {
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.biogas-container .listing-type-badge.degradable { color: #15803d; }
+.biogas-container .listing-type-badge.non-degradable { color: #b91c1c; }
+
+.biogas-container .listing-farmer-name {
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-primary-900);
+}
+
+.biogas-container .listing-contents {
+  margin: 4px 0 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--color-surface-bg);
+}
+
+.biogas-container .listing-contents-label {
+  margin: 0 0 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.biogas-container .listing-contents-text {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.biogas-container .biogas-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: none;
+  background: #7c3aed;
+  color: #fff;
+  font-weight: 700;
+}
+
+.biogas-container .biogas-btn:hover:not(:disabled) { background: #6d28d9; }
+.biogas-container .biogas-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.biogas-container .biogas-claimed-at { margin: 0 0 12px; font-size: 0.82rem; color: var(--color-text-muted); }
+.biogas-container .biogas-section-title { margin: 0 0 12px; font-family: var(--font-heading); font-size: 1.25rem; color: var(--color-primary-900); }
+.biogas-container .biogas-mine { padding: 18px; border-radius: 24px; background: #f5f3ff; border: 1px solid #ddd6fe; }
+.biogas-container .biogas-noimage { height: 100%; display: flex; align-items: center; justify-content: center; background: #f0fdf4; color: #16a34a; }
+
+/* Readable text on the purple header */
+.biogas-container .biogas-title,
+.biogas-container .biogas-title-icon,
+.biogas-container .biogas-stat-value { color: #fff; }
+.biogas-container .biogas-subtitle { color: rgba(255, 255, 255, 0.92); opacity: 1; }
+.biogas-container .biogas-stat-label { color: rgba(255, 255, 255, 0.88); opacity: 1; }
+.biogas-container .biogas-stat-value { font-size: 1.5rem; white-space: nowrap; }
+.biogas-container .biogas-stats { flex-wrap: wrap; gap: 8px 0; }
+
+@media (max-width: 700px) {
+  .biogas-container .filter-bar { flex-direction: column; align-items: stretch; gap: 12px; }
+  .biogas-container .filter-buttons { flex-wrap: wrap; width: 100%; }
+  .biogas-container .search-container { width: 100%; box-sizing: border-box; }
+  .biogas-container .listings-grid { grid-template-columns: 1fr; }
+  .biogas-container .biogas-header-content { flex-direction: column; align-items: stretch; gap: 16px; }
+}

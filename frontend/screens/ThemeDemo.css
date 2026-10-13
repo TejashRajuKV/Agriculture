@@ -1,0 +1,253 @@
+/* Theme Demo Styles - Storybook Farming Style */
+.theme-demo {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  position: relative;
+  background: var(--sb-sand); /* Base background */
+  font-family: 'Fredoka', sans-serif;
+  color: var(--sb-brown-dark);
+}
+
+/* Seasonal Theme Overrides */
+.theme-demo.season-spring {
+  background: linear-gradient(135deg, var(--sb-green-soft) 0%, #f0fdf4 100%);
+}
+
+.theme-demo.season-summer {
+  background: linear-gradient(135deg, var(--sb-sand) 0%, #fffbeb 100%);
+}
+
+.theme-demo.season-autumn {
+  background: linear-gradient(135deg, #ffedd5 0%, #fff7ed 100%); /* Orange tint */
+}
+
+.theme-demo.season-winter {
+  background: linear-gradient(135deg, var(--sb-sky-light) 0%, #f0f9ff 100%);
+}
+
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: slide-up 0.8s var(--bounce);
+}
+
+.demo-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  color: var(--sb-brown-dark);
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+.demo-subtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.demo-section {
+  margin-bottom: 4rem;
+  animation: slide-up 0.8s var(--bounce);
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--sb-brown-dark);
+  /* Removed gradient text for cleaner storybook look, added shadow */
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+}
+
+/* Season Grid */
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.season-card {
+  cursor: pointer;
+  transition: all 0.4s var(--bounce);
+  background: var(--sb-white);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  border: 3px solid transparent; /* Placeholder for hover border */
+  box-shadow: var(--shadow-sm); /* Default low shadow */
+}
+
+/* Use sb-card style manually or via class if added in JSX. 
+   Here we replicate it for existing markup */
+.season-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: var(--shadow-clay);
+  border-color: var(--sb-green-primary);
+}
+
+.season-card.active {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: var(--shadow-clay);
+  border: 3px solid var(--sb-green-primary);
+  background: var(--sb-white);
+}
+
+.season-content {
+  text-align: center;
+}
+
+.season-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem 0;
+  color: var(--sb-brown-dark);
+}
+
+.season-content p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Role Grid */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.role-card {
+  cursor: pointer;
+  transition: all 0.4s var(--bounce);
+  background: var(--sb-white);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+.role-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: var(--shadow-clay);
+  border-color: var(--sb-green-primary);
+}
+
+.role-card.active {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: var(--shadow-clay);
+  border: 3px solid var(--sb-green-primary);
+}
+
+.role-content {
+  text-align: center;
+}
+
+.role-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem 0;
+  color: var(--sb-brown-dark);
+}
+
+.role-content p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   GLOBAL AGRI-TECH POLISH LAYER
+   =============================== */
+
+body {
+  color: #0f172a;
+  background-color: #f8fafc;
+}
+
+/* ---------- Headings ---------- */
+h1, h2, h3 {
+  letter-spacing: -0.015em;
+}
+
+/* ---------- Section Cards ---------- */
+.section-card,
+.content-card,
+.info-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 36px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover,
+.content-card:hover,
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 52px rgba(0,0,0,0.12);
+}
+
+/* ---------- Soft Dividers ---------- */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #cbd5f5, transparent);
+  margin: 32px 0;
+}
+
+/* ---------- Tag / Badge ---------- */
+.tag,
+.badge {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  background: rgba(15,118,110,0.12);
+  color: #065f46;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- Charts ---------- */
+.chart-container,
+.graph-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+
+/* ---------- Scrollbar (Optional) ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#0f766e, #14b8a6);
+  border-radius: 999px;
+}

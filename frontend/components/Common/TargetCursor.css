@@ -1,0 +1,29 @@
+/* Premium Custom Cursor Styles */
+.cursor-inner {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #0f614b;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cursor-outer {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(15, 97, 75, 0.25);
+  background-color: rgba(15, 97, 75, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border 0.3s ease, 
+              background-color 0.3s ease, 
+              width 0.3s ease, 
+              height 0.3s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}

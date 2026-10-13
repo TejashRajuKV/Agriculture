@@ -1,0 +1,19 @@
+.lg-orders { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lg-orders label { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border: 1px solid var(--color-border); border-radius: 10px; cursor: pointer; }
+.lg-orders label span { display: grid; gap: 2px; min-width: 0; }
+.lg-orders small, .lg-stop-main small { color: var(--color-text-muted); font-size: 0.82rem; }
+.lg-disabled { opacity: 0.6; cursor: not-allowed !important; }
+.lg-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.lg-map { width: 100%; max-width: 420px; height: auto; background: #f6f9f1; border: 1px solid var(--color-border); border-radius: 12px; margin: 10px 0; }
+.lg-stops { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 8px; }
+.lg-stops li { display: flex; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--color-border); }
+.lg-stops li.next { border-color: #3f8f4f; background: #f1f8ee; }
+.lg-stops li.done { opacity: 0.6; }
+.lg-stop-main { display: grid; gap: 2px; flex: 1; min-width: 0; }
+.lg-badge { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 0.8rem; flex: none; }
+.lg-badge.pick { background: #d9a441; }
+.lg-badge.drop { background: #2f6f3e; }
+.lg-trip { display: grid; gap: 10px; }
+.ui-stat { display: grid; padding: 10px 12px; border-radius: 12px; background: #f6f9f1; }
+.ui-stat strong { font-size: 1.15rem; }
+.ui-stat span { font-size: 0.8rem; color: var(--color-text-muted); }

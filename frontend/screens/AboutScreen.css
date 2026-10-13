@@ -1,0 +1,237 @@
+/* Premium About Screen Styles - Imagine Cup Standard */
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fade-in 0.8s var(--ease-smooth);
+  padding: 2rem;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, var(--color-primary-900), var(--color-primary-800));
+  border-radius: 32px;
+  padding: 60px;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+}
+
+.about-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.about-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
+}
+
+/* Grid of Cards */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.about-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary-200);
+}
+
+.card-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary-50);
+  color: var(--color-primary-600);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-900);
+  margin-bottom: 12px;
+  font-family: var(--font-heading);
+}
+
+.card-desc {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Team Section */
+.team-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.team-title {
+  font-size: 2.5rem;
+  font-family: var(--font-heading);
+  color: var(--color-primary-900);
+  margin-bottom: 32px;
+}
+
+/* --- Fill in styles for classes the markup uses --- */
+.about-container .about-header {
+  background: linear-gradient(135deg, var(--color-primary-900), var(--color-primary-800));
+  border-radius: 32px;
+  padding: 56px 40px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.about-container .about-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 65%);
+  pointer-events: none;
+}
+
+.about-container .about-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.15;
+}
+
+.about-container .about-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+}
+
+.about-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.about-icon-green { background: #dcfce7; color: #15803d; }
+.about-icon-emerald { background: #d1fae5; color: #047857; }
+.about-icon-lime { background: #ecfccb; color: #4d7c0f; }
+
+.about-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-primary-900);
+  margin: 0 0 12px;
+}
+
+.about-card-text {
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.about-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.about-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-500);
+}
+
+.about-vision {
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 28px;
+  padding: 36px 40px;
+  text-align: center;
+}
+
+.about-vision-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-primary-900);
+  margin: 0 0 12px;
+}
+
+.about-vision-text {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--color-text-main);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 700px) {
+  .about-container { padding: 0.5rem; gap: 24px; }
+  .about-container .about-header { padding: 36px 20px; border-radius: 24px; }
+  .about-card { padding: 24px 20px; }
+  .about-vision { padding: 28px 20px; }
+}

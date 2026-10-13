@@ -1,0 +1,612 @@
+/* Premium Scan Result Styles - Imagine Cup Standard */
+
+.scan-result-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  /* Backdrop */
+  backdrop-filter: blur(8px);
+  /* above the sticky app header (z-index 100) */
+  z-index: 200;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  animation: fade-in 0.4s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scan-result-content-wrapper {
+  /* Assuming this class might be useful if I wrapped it, but purely targeting children via container context is riskier without JSX change. 
+   The current JSX writes: <div className="scan-result-container"> ... <div className="scan-result-header"> ... <div className="scan-result-content"> 
+   I need to be careful. The header is INSIDE the container but styling implied it was full width or modal?
+   Layout in JSX: container -> header + content.
+   
+   If I want a modal look, I should wrap header+content in a 'card' but JSX separates them.
+   I will style the container as the modal wrapper (fixed inset 0) and specific children.
+*/
+
+  /* Re-reading JSX:
+   <div className="scan-result-container">
+      <div className="scan-result-header">...</div>
+      <div className="scan-result-content">...</div>
+   </div>
+
+   The header was position: relative; height: 20rem; in old CSS.
+   The content was position: relative; top: -3rem;
+   This suggests a specific layout I should preserve or improve.
+   I'll make the whole thing a floating modal card.
+*/
+}
+
+/* Redefining Container to behave more like a full screen scrollable view since header is large */
+.scan-result-container {
+  display: block;
+  /* unset flex */
+  background: var(--color-surface-bg);
+}
+
+.scan-result-header {
+  height: 40vh;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.header-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ai-badge {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+  padding: 6px 16px;
+  border-radius: 99px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.scan-result-container .header-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-badges {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.confidence-badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+.close-button:hover {
+  background: white;
+  color: black;
+  transform: rotate(90deg);
+}
+
+/* Content */
+.scan-result-content {
+  max-width: 1000px;
+  margin: -60px auto 0;
+  position: relative;
+  z-index: 10;
+  padding: 0 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: slide-up 0.6s ease-out 0.2s backwards;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.metric-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.metric-card-blue .metric-icon {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.metric-card-amber .metric-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary-900);
+}
+
+/* Price & Impact */
+.price-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Price Card */
+.price-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid #bbf7d0;
+  /* Green tint */
+}
+
+.price-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-primary-600);
+}
+
+.price-unit {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Impact Card */
+.scan-result-container .impact-card {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  padding: 32px;
+  border-radius: 24px;
+  text-align: center;
+  border: 1px solid #bbf7d0;
+  box-shadow: var(--shadow-lg);
+}
+
+.scan-result-container .impact-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #166534;
+}
+
+/* Visualizer */
+.carbon-visualizer {
+  background: white;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border);
+}
+
+.visualizer-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.visualizer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-900);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-calc-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.visualizer-content {
+  padding: 32px;
+}
+
+.carbon-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 32px;
+}
+
+.co2-value,
+.tree-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary-800);
+  margin-bottom: 4px;
+}
+
+.tree-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scan-result-container .chart-container {
+  height: 120px;
+}
+
+.chart-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Uses & Transport */
+.uses-section,
+.transport-section {
+  background: white;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.uses-title,
+.transport-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-primary-900);
+}
+
+.uses-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.use-tag {
+  background: var(--color-surface-bg);
+  border: 1px solid var(--color-border);
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.transport-content {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.transport-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transport-icon-green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.transport-icon-orange {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.transport-feasibility {
+  font-weight: 700;
+  color: var(--color-primary-900);
+}
+
+.transport-description {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Button */
+.list-button {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
+  color: white;
+  padding: 20px;
+  border-radius: 99px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(6, 78, 59, 0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.list-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(6, 78, 59, 0.4);
+}
+
+.scan-result-container .close-icon {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+.scan-result-container .metric-icon-blue { color: #2563eb; }
+.scan-result-container .metric-icon-amber { color: #d97706; }
+
+.scan-result-container .price-label {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.scan-result-container .impact-score {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.scan-result-container .impact-max {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.scan-result-container .co2-stat,
+.scan-result-container .tree-stat { flex: 1; min-width: 0; }
+
+.scan-result-container .co2-label,
+.scan-result-container .tree-label {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+.scan-result-container .transport-info { flex: 1; min-width: 0; }
+
+.scan-result-container .residue-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.scan-result-container .residue-picker label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary-900);
+}
+
+.scan-result-container .residue-picker select {
+  flex: 1 1 200px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-bg);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text-main);
+}
+
+.scan-result-container .quantity-picker {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.scan-result-container .quantity-picker label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-primary-900);
+}
+
+.scan-result-container .quantity-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scan-result-container .quantity-input input {
+  width: 140px;
+  padding: 10px 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-bg);
+}
+
+.scan-result-container .quantity-input span {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.scan-result-container .quantity-error { color: #b91c1c; }
+
+.scan-result-container .residue-picker-unsure {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.scan-result-container .residue-picker-unsure label {
+  color: #92400e;
+}
+
+.scan-result-container .moisture-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 4px;
+}
+
+.scan-result-container .moisture-option {
+  flex: 1 1 auto;
+  padding: 8px 12px;
+  border-radius: 99px;
+  border: 1px solid #bfdbfe;
+  background: #fff;
+  color: #1e40af;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.scan-result-container .moisture-option.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+.scan-result-container .metric-hint {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.scan-result-container .metric-value-sm {
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.scan-result-container .scan-note {
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.scan-result-container .scan-note-warning {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+/* Stack the two-up cards on phones */
+@media (max-width: 560px) {
+  .metrics-grid,
+  .price-impact-grid {
+    grid-template-columns: 1fr;
+  }
+}

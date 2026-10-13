@@ -1,0 +1,197 @@
+/* NatureAuthScreen.css - Storybook Farming Style */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sb-sky-light) 0%, #dcfce7 100%);
+  padding: 20px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  animation: fadeIn 0.8s var(--bounce);
+}
+
+.auth-card {
+  background: var(--sb-white);
+  padding: 3rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-clay);
+  max-width: 450px;
+  width: 100%;
+  border: 4px solid var(--sb-white);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--bounce);
+}
+
+.auth-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-float);
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--sb-green-dark);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.auth-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 1.5rem;
+  border: 3px solid var(--sb-sand);
+  border-radius: 20px;
+  font-size: 1.1rem;
+  color: var(--sb-brown-dark);
+  font-family: inherit;
+  transition: all 0.3s var(--bounce);
+  background: #f8fafc;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: var(--sb-green-primary);
+  background: var(--sb-white);
+  box-shadow: 0 0 0 4px rgba(132, 204, 22, 0.2);
+}
+
+/* Keep browser autofill from painting a blue block over the field */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--sb-brown-dark);
+  -webkit-box-shadow: 0 0 0 1000px #f8fafc inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.auth-input::placeholder {
+  color: #94a3b8;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--sb-green-primary);
+  color: var(--sb-white);
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--sb-green-dark);
+  transition: all 0.2s var(--bounce);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.auth-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 var(--sb-green-dark);
+  background: #95d624;
+}
+
+.auth-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--sb-green-dark);
+}
+
+/* Decorative elements */
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background: var(--sb-yellow);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.auth-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 80px;
+  height: 80px;
+  background: var(--sb-green-light);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-switch {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  margin: -1rem 0 1.25rem;
+  border-radius: 99px;
+  background: #f1f5f9;
+}
+
+.auth-switch button {
+  flex: 1;
+  border: none;
+  padding: 9px 12px;
+  background: transparent;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.auth-switch button.active {
+  background: #fff;
+  color: var(--sb-green-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.auth-role-note {
+  position: relative;
+  z-index: 1;
+  margin: -0.5rem 0 1rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.auth-form select.auth-input { appearance: auto; }
+
+.auth-error {
+  margin: -0.5rem 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.92rem;
+}
+
+.auth-button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.auth-back {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 1rem auto 0;
+  border: none;
+  background: none;
+  color: #64748b;
+  font-weight: 600;
+}

@@ -1,0 +1,119 @@
+/* Crop Animation Styles */
+.crop-container {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.crop-left {
+  left: -50px;
+}
+
+.crop-right {
+  right: -50px;
+}
+
+.crop-base {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crop-stem {
+  width: 4px;
+  background: linear-gradient(to top, #16a34a, #22c55e);
+  border-radius: 2px;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.crop-stem-left {
+  height: 80px;
+}
+
+.crop-stem-right {
+  height: 100px;
+}
+
+.crop-leaves {
+  position: absolute;
+  font-size: 16px;
+  transform-origin: center;
+}
+
+.crop-leaves-left.leaf-1 {
+  left: -15px;
+  top: 60%;
+}
+
+.crop-leaves-left.leaf-2 {
+  right: -15px;
+  top: 40%;
+}
+
+.crop-leaves-left.leaf-3 {
+  left: -10px;
+  top: 20%;
+}
+
+.crop-leaves-right.leaf-1 {
+  left: -18px;
+  top: 70%;
+}
+
+.crop-leaves-right.leaf-2 {
+  right: -18px;
+  top: 50%;
+}
+
+.crop-leaves-right.leaf-3 {
+  left: -12px;
+  top: 30%;
+}
+
+.crop-leaves-right.leaf-4 {
+  right: -12px;
+  top: 10%;
+}
+
+.crop-grain {
+  font-size: 20px;
+  position: absolute;
+  top: -25px;
+  transform-origin: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .crop-container {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .crop-left {
+    left: -30px;
+  }
+  
+  .crop-right {
+    right: -30px;
+  }
+  
+  .crop-stem-left {
+    height: 60px;
+  }
+  
+  .crop-stem-right {
+    height: 80px;
+  }
+  
+  .crop-leaves {
+    font-size: 14px;
+  }
+  
+  .crop-grain {
+    font-size: 18px;
+  }
+}

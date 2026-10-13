@@ -1,0 +1,8 @@
+# Secrets (API keys, DB URI, AUTH_SECRET) and their backups
+.env
+.env.*
+!.env.example
+
+# User uploads and dependencies
+uploads/
+node_modules/
